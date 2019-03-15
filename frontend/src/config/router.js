@@ -1,0 +1,23 @@
+//Configuração de Rotas
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+import Home from '@/components/home/Home'
+import AdminPages from '@/components/admin/AdminPages'
+
+Vue.use(VueRouter)
+
+const routes = [{ //Rotas
+    name: 'home',
+    path: '/',
+    component: Home
+}, {
+    name: 'adminPages',
+    path: '/admin',
+    component: AdminPages
+}]
+
+export default new VueRouter({ //Instância do VueRouter
+    mode: 'history',
+    routes
+})
