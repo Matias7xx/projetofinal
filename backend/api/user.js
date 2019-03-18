@@ -19,10 +19,19 @@ module.exports = app => { //representa instância do express
         try{
             existsOrError(user.name, 'Nome não informado')
             existsOrError(user.email, 'E-mail não informado')
+            //if(!user.id) {
             existsOrError(user.password, 'Senha não informada')
             existsOrError(user.confirmPassword, 'Confirmação de senha inválida')
             equalsOrError(user.password, user.confirmPassword,
                 'Senhas não conferem')
+            //} else {
+            //    if(user.password || user.confirmPassword) {
+            //existsOrError(user.password, 'Senha não informada')
+            //existsOrError(user.confirmPassword, 'Confirmação de senha inválida')
+            //equalsOrError(user.password, user.confirmPassword,
+            //    'Senhas não conferem')
+            //    }
+            // }
 
             const userFromDB = await app.db('users')
                 .where({ email: user.email }).first()
