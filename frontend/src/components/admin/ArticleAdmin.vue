@@ -12,7 +12,7 @@
                 <b-form-input id="article-description" type="text"
                     v-model="article.description" required
                     :readonly="mode === 'remove'"
-                    placeholder="Informe o Nome do Artigo..." />
+                    placeholder="Informe a Descrição do Artigo..." />
             </b-form-group>
             <b-form-group v-if="mode === 'save'"
                 label="Imagem (URL):" label-for="article-imageUrl">
@@ -22,7 +22,7 @@
                     placeholder="Informe a URL da Imagem..." />
             </b-form-group>
             <b-form-group v-if="mode === 'save'" 
-                label="Categoria:" label-for="article-categoryId">
+                label="Matéria:" label-for="article-categoryId">
                 <b-form-select id="article-categoryId"
                     :options="categories" v-model="article.categoryId" />
             </b-form-group>
