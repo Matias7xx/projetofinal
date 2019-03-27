@@ -47,6 +47,17 @@ export default {
             })
         }
     },
+    watch: { //Alterar rotas do item selecionado no menu
+        $route(to) {
+            this.category.id = to.params.id
+            this.articles = []
+            this.page = 1
+            this.loadMore = true
+
+            this.getCategory()
+            this.getArticles()
+        }
+    },
     mounted() { //Trazer o artigo na tela
         this.category.id = this.$route.params.id
         this.getCategory()
