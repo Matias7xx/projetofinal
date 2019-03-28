@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+export const userKey = '__knowledge_user' //Chave utilizada no LocalStorage
 //Url base para requisições Ajax com Axios
 export const baseApiUrl = 'http://localhost:3000' //Primeira maneira de exportar
 
@@ -14,4 +15,4 @@ export function showError(e) {
     }
 }
 
-export default { baseApiUrl, showError } //Segunda maneira de exportar
+export default { baseApiUrl, showError, userKey } //Segunda maneira de exportar
