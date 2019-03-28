@@ -11,7 +11,7 @@
       <router-link to="/admin">
         <i class="fa fa-cogs"></i> Administração
       </router-link>
-      <a href>
+      <a href @click.prevent="logout">
         <i class="fa fa-sign-out"></i> Sair
       </a>
     </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { userKey } from '@/global' //UserKey para excluir os dados armazenados no LocalStorage
 import { mapState } from "vuex"; //Mapear usuário na store
 import Gravatar from "vue-gravatar"; //Imagem do email do usuário
 
@@ -26,7 +27,14 @@ export default {
   //DropDown do usuário
   name: "UserDropdown",
   components: { Gravatar },
-  computed: mapState(["user"])
+  computed: mapState(["user"]),
+  methods: {
+    logout() { //Botão sair
+      localStorage.removeItem(userKey) //Remover do LocalStorage
+      this.$store.commit('setUser', null) //Esconder Menu
+      this.$router.push({ name: 'auth' }) //Ao clicar em sair, será redirecionado para tela de login
+    }
+  }
 };
 </script>
 
