@@ -4,7 +4,7 @@
 			:hideToggle="!user"
 			:hideUserDropdown="!user" />
 		<Menu v-if="user" />
-		<Loading v-if="validateToken" />
+		<Loading v-if="validatingToken" />
 		<Content v-else />
 		<Footer />
 	</div>
