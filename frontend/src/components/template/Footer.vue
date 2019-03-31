@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <span>Copyright <strong>Knowledge</strong> © 2019</span>
+        <span>Copyright <strong>Gabriel Nóbrega</strong> © 2019</span>
     </footer>
 </template>
 

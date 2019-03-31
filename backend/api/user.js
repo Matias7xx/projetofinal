@@ -17,13 +17,13 @@ module.exports = app => { //representa instância do express
         if(!req.user || !req.user.admin) user.admin = false //Se não tem ninguém logado ou se a flag admin do usuario for falso, admin será falso
 
         try{
-            existsOrError(user.name, 'Nome não informado')
-            existsOrError(user.email, 'E-mail não informado')
+            existsOrError(user.name, 'Nome não informado.')
+            existsOrError(user.email, 'E-mail não informado.')
             //if(!user.id) {
-            existsOrError(user.password, 'Senha não informada')
-            existsOrError(user.confirmPassword, 'Confirmação de senha inválida')
+            existsOrError(user.password, 'Senha não informada.')
+            existsOrError(user.confirmPassword, 'Confirmação de senha não informada.')
             equalsOrError(user.password, user.confirmPassword,
-                'Senhas não conferem')
+                'Senhas não conferem.')
             //} else {
             //    if(user.password || user.confirmPassword) {
             //existsOrError(user.password, 'Senha não informada')
@@ -36,7 +36,7 @@ module.exports = app => { //representa instância do express
             const userFromDB = await app.db('users')
                 .where({ email: user.email }).first()
             if(!user.id) {  
-            notExistsOrError(userFromDB, 'Usuário já cadastrado')
+            notExistsOrError(userFromDB, 'Usuário já cadastrado.')
             }
         } catch(msg){
             return res.status(400).send(msg) //Erro do client

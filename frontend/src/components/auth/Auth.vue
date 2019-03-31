@@ -8,19 +8,20 @@
             </div>
             <hr>
             <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
-
-            <input v-if="showSignup" v-model="user.name" type="text" placeholder="Nome">
-            <input v-model="user.email" name="email" type="text" placeholder="E-mail">
-            <input v-model="user.password" name="password" type="password" placeholder="Senha">
-            <input v-if="showSignup" v-model="user.confirmPassword"
+            <input @keyup.enter="signup" v-if="showSignup" v-model="user.name" type="text" placeholder="Nome">
+            <input v-if="showSignup" @keyup.enter="signup" v-model="user.email" name="email" type="text" placeholder="E-mail">
+            <input v-else @keyup.enter="signin" v-model="user.email" name="email" type="text" placeholder="E-mail">
+            <input v-if="showSignup" @keyup.enter="signup" v-model="user.password" name="password" type="password" placeholder="Senha">
+            <input v-else @keyup.enter="signin" v-model="user.password" name="password" type="password" placeholder="Senha">
+            <input @keyup.enter="signup" v-if="showSignup" v-model="user.confirmPassword"
                 type="password" placeholder="Confirme a Senha">
 
             <button v-if="showSignup" @click="signup">Registrar</button>
             <button v-else @click="signin">Entrar</button>
 
             <a href @click.prevent="showSignup = !showSignup">
-                <span v-if="showSignup">Possui cadastro? Faça o Login!</span>
-                <span v-else>Não possui cadastro? Registre-se aqui!</span>
+                <span v-if="showSignup" @click="reset">Possui cadastro? Faça o Login!</span>
+                <span v-else @click="reset">Não possui cadastro? Registre-se aqui!</span>
             </a>
         </div>
     </div>
@@ -57,6 +58,9 @@ export default {
                     this.showSignup = false
                 })
                 .catch(showError)
+        },
+        reset() { //Limpar campos
+            this.user = {}
         }
     }
 }

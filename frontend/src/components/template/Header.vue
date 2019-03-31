@@ -4,7 +4,9 @@
             <i class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">
-            <router-link to="/">{{ title }}</router-link>
+            <router-link to="/" v-if="user">{{ title }}</router-link>
+            <router-link to="" v-else>{{ title }}</router-link>
+
         </h1>
         <UserDropdown v-if="!hideUserDropdown" />
     </header>
@@ -12,6 +14,7 @@
 
 <script>
 import UserDropdown from './UserDropdown' //Vai controlar o dropdown/Menu de usuário
+import { mapState } from 'vuex'
 
 export default {
     name: 'Header',
@@ -24,7 +27,8 @@ export default {
     computed: {
         icon() {
             return this.$store.state.isMenuVisible ? "fa-angle-left" : "fa-angle-down"
-        }
+        },
+        ...mapState(["user"])
     },
     methods: {
         toggleMenu() {
@@ -59,7 +63,7 @@ export default {
         text-decoration: none;
     }
 
-     .title a:hover {
+    .title a:hover {
         color: #fff;
         text-decoration: none;
     }

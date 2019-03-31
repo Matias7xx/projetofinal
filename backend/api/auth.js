@@ -5,8 +5,12 @@ const bcrypt = require('bcrypt-nodejs') //Comparar senhas criptografadas
 
 module.exports = app => {
     const signin = async (req, res) => {
-        if (!req.body.email || !req.body.password) { //Se email e usuário não estiverem presentes
-            return res.status(400).send('Informe usuário e senha!')
+        if (!req.body.email && !req.body.password) { //Se email e senha não estiverem presentes
+            return res.status(400).send('Informe E-mail e Senha.')
+        } else if (!req.body.email) {
+            return res.status(400).send('E-mail não informado.')
+        } else if (!req.body.password) {
+            return res.status(400).send('Senha não informada.')
         }
 
         const user = await app.db('users') //Obter usuário do banco de dados
@@ -14,10 +18,10 @@ module.exports = app => {
             .where({ email: req.body.email })
             .first()
 
-        if (!user) return res.status(400).send('Usuário não encontrado!') // Se o usuário não existe, o email não foi cadastrado
+        if (!user) return res.status(400).send('Usuário não encontrado.') // Se o usuário não existe, o email não foi cadastrado
 
         const isMatch = bcrypt.compareSync(req.body.password, user.password) //Comparar senhas criptografadas
-        if (!isMatch) return res.status(401).send('Email e/ou Senha inválido(s)!') //Se não forem iguais
+        if (!isMatch) return res.status(401).send('Email e/ou Senha inválido(s).') //Se não forem iguais
 
         const now = Math.floor(Date.now() / 1000) //Capturar data atual
 

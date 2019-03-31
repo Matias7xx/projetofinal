@@ -46,6 +46,10 @@ export default {
 
 			if (res.data) {
 				this.$store.commit('setUser', userData)
+				//Responsividade com VUE-MQ
+				if(this.$mq === 'xs' || this.$mq === 'sm') {
+					this.$store.commit('toggleMenu', false)
+				}
 			} else {
 				localStorage.removeItem(userKey)
 				this.$router.push({ name: 'auth' })
