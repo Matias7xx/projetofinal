@@ -1,7 +1,11 @@
 <template>
     <div class="auth-content">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <div class="auth-modal">
-            <img id="logo" src="@/assets/logo.png" width="200" alt="Logo" />
+            <div class="auth-img">
+            <img id="logo" src="@/assets/logo.png" width="100" alt="Logo" />
+            <label>nowledge</label>
+            </div>
             <hr>
             <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
 
@@ -25,6 +29,7 @@
 <script> //Componente para tela de Cadastro e tela de Login
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
+
 
 export default {
     name: 'Auth',
@@ -111,5 +116,18 @@ export default {
             rgba(120, 120, 120, 0),
             rgba(120, 120, 120, 0.75),
             rgba(120, 120, 120, 0));
+    }
+
+    .auth-modal label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 41px;
+        margin: 1px;
+        position: relative;
+        top: 6.1vh;
+        font-weight: 100;
+
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     }
 </style>
