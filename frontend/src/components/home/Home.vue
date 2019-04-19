@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <PageTitle icon="fa fa-home" main="Dashboard"
-            sub="Knowledge" />
+            sub="Estatísticas" />
         <div class="stats">
             <Stat id="materias" title="Matérias" :value="stat.categories"
                 icon="fa fa-book" color="#FFF" />
@@ -47,14 +47,17 @@ export default {
     }
 
     #materias {
-        background: linear-gradient(90deg, rgba(255,0,83,1) 0%, rgba(158,7,46,1) 100%);
+        /*background: linear-gradient(90deg, rgba(255,0,83,1) 0%, rgba(158,7,46,1) 100%);*/
+        background: rgba(0,188,212,1);
     }
 
     #assuntos {
-        background: linear-gradient(90deg, rgba(55,217,78,1) 0%, rgba(22,133,11,1) 100%);   
+        /*background: linear-gradient(90deg, rgba(55,217,78,1) 0%, rgba(22,133,11,1) 100%);*/
+        background: rgba(255,193,7,1);
     }
 
     #usuarios {
-        background: linear-gradient(90deg, rgba(61,103,233,1) 0%, rgba(11,70,172,1) 100%);
+        /*background: linear-gradient(90deg, rgba(61,103,233,1) 0%, rgba(11,70,172,1) 100%);*/
+        background: rgba(97,97,97,1);
     }
 </style>

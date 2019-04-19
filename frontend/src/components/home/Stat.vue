@@ -1,5 +1,7 @@
 <template>
     <div class="stat">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
         <div class="stat-icon">
             <i :class="icon" :style="style"></i>
         </div>
@@ -28,11 +30,11 @@ export default {
     .stat {
         flex: 1;
         display: flex;
-        border-radius: 8px;
-        margin-right: 20px;
+        /*border-radius: 8px;*/
+        margin-right: 30px;
         margin-bottom: 20px;
         background-color: #FFF;
-        padding: 20px;
+        padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     }
@@ -43,7 +45,7 @@ export default {
     }
 
     .stat-icon i {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .stat-info {
@@ -55,9 +57,11 @@ export default {
 
     .stat-title {
         font-size: 1.2rem;
+        font-family: 'Cinzel', serif;
     }
 
     .stat-value {
         font-size: 3rem;
+        font-family: 'Montserrat', sans-serif;
     }
 </style>
