@@ -5,6 +5,7 @@ module.exports = app => {
         const usersCount = await app.db('users').whereNull('deletedAt').count('id').first() //Pegando dados do banco
         const categoriesCount = await app.db('categories').count('id').first()
         const articlesCount = await app.db('articles').count('id').first()
+        const newsCount = await app.db('news').count('id').first()
 
         const { Stat } = app.api.stat
 
@@ -15,14 +16,16 @@ module.exports = app => {
             users: usersCount.count,
             categories: categoriesCount.count,
             articles: articlesCount.count,
+            news: newsCount.count,
             createdAt: new Date()
         })
         //Verificando se houve mudanças nas estatísticas
         const changeUsers = !lastStat || stat.users !== lastStat.users
         const changeCategories = !lastStat || stat.categories !== lastStat.categories
         const changeArticles = !lastStat || stat.articles !== lastStat.articles
+        const changeNews = !lastStat || stat.news !== lastStat.news
 
-        if(changeUsers || changeCategories || changeArticles) {
+        if(changeUsers || changeCategories || changeArticles || changeNews) {
             stat.save().then(() => console.log('[Stats] Estatíticas atualizadas!'))
         }
     })

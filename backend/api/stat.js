@@ -4,6 +4,7 @@ module.exports = app => {
         users: Number,
         categories: Number,
         articles: Number,
+        news: Number,
         createdAt: Date
     })
 
@@ -14,7 +15,8 @@ module.exports = app => {
                 const defaultStat = {
                     users: 0,
                     categories: 0,
-                    articles: 0
+                    articles: 0,
+                    news: 0
                 }
                 res.json(stat || defaultStat)
             })

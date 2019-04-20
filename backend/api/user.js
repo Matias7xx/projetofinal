@@ -84,6 +84,10 @@ module.exports = app => { //representa instância do express
                 .where({ userId: req.params.id })
             notExistsOrError(articles, 'Usuário possui artigos cadastrados.')
 
+            const news = await app.db('news') //Usuários com notícias associadas não serão excluídos
+            .where({ userId: req.params.id })
+            notExistsOrError(news, 'Usuário possui notícias cadastradas.')
+
             const rowsUpdated = await app.db('users')
                 .update({deletedAt: new Date()})
                 .where({ id: req.params.id })

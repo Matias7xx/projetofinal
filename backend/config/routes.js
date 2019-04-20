@@ -51,6 +51,17 @@ module.exports = app => {
         .all(app.config.passport.authenticate()) //Todos os serviços dependem de autenticação(LOGIN)
         .get(app.api.article.getByCategory)
 
+        app.route('/news')
+        .all(app.config.passport.authenticate())
+        .get(admin(app.api.news.get))
+        .post(admin(app.api.news.save))
+
+    app.route('/news/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.news.getById)
+        .put(admin(app.api.news.save))
+        .delete(admin(app.api.news.remove))
+
     app.route('/stats')
         .all(app.config.passport.authenticate())
         .get(app.api.stat.get)
