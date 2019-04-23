@@ -6,7 +6,9 @@
             <Stat id="materias" title="Matérias" :value="stat.categories"
                 icon="fa fa-book" color="#FFF" />
             <Stat id="assuntos" title="Assuntos" :value="stat.articles"
-                icon="fa fa-file" color="#FFF" />
+                icon="fa fa-file-text" color="#FFF" />
+            <Stat id="noticias" title="Notícias" :value="stat.news"
+                icon="fa fa-newspaper-o" color="#FFF" />
             <Stat id="usuarios" title="Usuários" :value="stat.users"
                 icon="fa fa-user" color="#FFF" />
         </div>
@@ -48,16 +50,25 @@ export default {
 
     #materias {
         /*background: linear-gradient(90deg, rgba(255,0,83,1) 0%, rgba(158,7,46,1) 100%);*/
-        background: rgba(0,188,212,1);
+        /*background: rgba(0,188,212,1);*/
+        background: linear-gradient(60deg, #66bb6a, #43a047);
     }
 
     #assuntos {
         /*background: linear-gradient(90deg, rgba(55,217,78,1) 0%, rgba(22,133,11,1) 100%);*/
-        background: rgba(255,193,7,1);
+        /*background: rgba(255,193,7,1);*/
+        background: linear-gradient(60deg, #ffa726, #fb8c00);
+    }
+
+    #noticias {
+        /*background: linear-gradient(90deg, rgba(55,217,78,1) 0%, rgba(22,133,11,1) 100%);*/
+        /*background: rgba(97,97,97,1);*/
+        background: linear-gradient(60deg, #ef5350, #e53935);
     }
 
     #usuarios {
         /*background: linear-gradient(90deg, rgba(61,103,233,1) 0%, rgba(11,70,172,1) 100%);*/
-        background: rgba(97,97,97,1);
+        /*background: rgb(194, 99, 35);*/
+        background: linear-gradient(60deg, #26c6da, #00acc1);
     }
 </style>

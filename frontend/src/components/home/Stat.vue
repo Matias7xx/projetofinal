@@ -30,7 +30,7 @@ export default {
     .stat {
         flex: 1;
         display: flex;
-        /*border-radius: 8px;*/
+        border-radius: 8px;
         margin-right: 30px;
         margin-bottom: 20px;
         background-color: #FFF;
