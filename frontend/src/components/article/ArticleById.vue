@@ -1,5 +1,8 @@
 <template>
     <div class="article-by-id">
+        <a class="voltar" @click="goBack">
+            <i class="fa fa-chevron-circle-left"></i>
+        </a>
         <PageTitle icon="fa fa-file-o" :main="article.name" :sub="article.description" />
         <div class="article-content" v-html="article.content"></div>
     </div>
@@ -19,6 +22,13 @@ export default { //Exibir o artigo
         return {
             article: {}
         }
+    },
+    methods: {
+    goBack () {
+        window.history.length > 1
+        ? this.$router.go(-1)
+        : this.$router.push('/')
+    }
     },
     mounted() {
         const url = `${baseApiUrl}/articles/${this.$route.params.id}`
@@ -53,5 +63,18 @@ export default { //Exibir o artigo
 
     .article-content :last-child {
         margin-bottom: 0px;
+    }
+
+    .voltar i {
+        color: rgba(52,60,65,1);
+        text-decoration: none;
+        font-size: 4rem;
+        float: left;
+        margin-right: 20px;
+    }
+
+    .voltar i:hover {
+        color: rgb(41, 106, 212);
+        background-color: #efefef;
     }
 </style>
