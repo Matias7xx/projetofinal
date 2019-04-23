@@ -5,7 +5,10 @@
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Assuntos" active>
+                    <b-tab title="Notícias" active>
+                        <NewsAdmin />
+                    </b-tab>
+                    <b-tab title="Assuntos" >
                         <ArticleAdmin />
                     </b-tab>
                     <b-tab title="Matérias" >
@@ -26,10 +29,11 @@ import PageTitle from '../template/PageTitle'
 import ArticleAdmin from './ArticleAdmin'
 import CategoryAdmin from './CategoryAdmin'
 import UserAdmin from './UserAdmin'
+import NewsAdmin from './NewsAdmin'
 
 export default {
     name: 'AdminPages',
-    components: { PageTitle, ArticleAdmin, CategoryAdmin, UserAdmin }
+    components: { PageTitle, ArticleAdmin, CategoryAdmin, UserAdmin, NewsAdmin }
 }
 </script>
 
