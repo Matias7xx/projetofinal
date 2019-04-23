@@ -53,7 +53,7 @@ module.exports = app => {
 
         app.route('/news')
         .all(app.config.passport.authenticate())
-        .get(admin(app.api.news.get))
+        .get(app.api.news.get)
         .post(admin(app.api.news.save))
 
     app.route('/news/:id')

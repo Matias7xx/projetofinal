@@ -7,6 +7,8 @@ import AdminPages from '@/components/admin/AdminPages'
 import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
+import NewsList from '@/components/news/NewsList'
+import NewsById from '@/components/news/NewsById'
 
 import { userKey } from '@/global' //Token de usuário para Evitar o /admin por usuários comuns
 
@@ -33,6 +35,14 @@ const routes = [{ //Rotas
     name: 'auth',
     path: '/auth',
     component: Auth
+}, {
+    name: 'newsList',
+    path: '/news',
+    component: NewsList
+}, {
+    name: 'newsById',
+    path: '/news/:id',
+    component: NewsById
 }]
 
 const router = new VueRouter({ //Instância do VueRouter
