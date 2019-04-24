@@ -2,7 +2,7 @@
 const bcrypt = require('bcrypt-nodejs')
 
 module.exports = app => { //representa instância do express
-    const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
+    const { existsOrError, notExistsOrError, equalsOrError, passCaracters, checkEmail } = app.api.validation
     //encriptar senha
     const encryptPassword = password => {
         const salt = bcrypt.genSaltSync(10)
@@ -24,7 +24,9 @@ module.exports = app => { //representa instância do express
             existsOrError(user.confirmPassword, 'Confirmação de senha não informada.')
             equalsOrError(user.password, user.confirmPassword,
                 'Senhas não conferem.')
-            //} else {
+            passCaracters(user.password, 'Senha deve conter no mínimo 7 caracteres.')
+            checkEmail(user.email, 'O E-mail informado é inválido.')
+                //} else {
             //    if(user.password || user.confirmPassword) {
             //existsOrError(user.password, 'Senha não informada')
             //existsOrError(user.confirmPassword, 'Confirmação de senha inválida')

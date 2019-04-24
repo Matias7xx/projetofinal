@@ -34,7 +34,7 @@ export default { //Exibir o artigo
     },
     format_date(value){
             if (value) {
-            return moment(String(value)).format('LLLL')
+            return moment(String(value)).format('LL')
             }
         }
     },

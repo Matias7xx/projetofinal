@@ -13,7 +13,7 @@
                 <h2>{{ news.name }}</h2>
                 <p>{{ news.description }}</p>
                 <span class="news-item-author">
-                    <strong>Data da Publicação: </strong>{{ format_date(news.createdAt) }}
+                    <strong>Data de Publicação: </strong>{{ format_date(news.createdAt) }}
                 </span>
             </div>
         </router-link>

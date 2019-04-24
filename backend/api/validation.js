@@ -1,5 +1,8 @@
 module.exports = app => {
     //Validações de dados durante as requisições!
+
+    const validator = require('email-validator')
+
     function existsOrError(value, msg) {  //Nome de matérias, assuntos, etc
         if (!value) throw msg //Se o valor não existe
         if (Array.isArray(value) && value.length === 0) throw msg //Se receber array vazio
@@ -19,5 +22,13 @@ module.exports = app => {
         if (valueA !== valueB) throw msg
     }
 
-    return { existsOrError, notExistsOrError, equalsOrError }
+    function passCaracters(value, msg) {
+        if(value.length < 7 ) throw msg
+    }
+
+    function checkEmail(value, msg) {
+        if(!validator.validate(value)) throw msg
+    }
+
+    return { existsOrError, notExistsOrError, equalsOrError, passCaracters, checkEmail }
 }
