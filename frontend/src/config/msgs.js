@@ -15,6 +15,7 @@ Vue.toasted.register(
 
 Vue.toasted.register(
     'defaultError',
-    payload => !payload.msg ? 'Erro inesperado.' : payload.msg,
+    payload => !payload.msg ? 'Senha incorreta.' : payload.msg,
     { type: 'error', icon: 'times' }
+    //Ao invés de erro inesperado, deverá ser Senha incorreta
 )

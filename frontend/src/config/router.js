@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import AdminPages from '@/components/admin/AdminPages'
+import AdminUserData from '@/components/admin/AdminUserData'
 import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
@@ -24,6 +25,10 @@ const routes = [{ //Rotas
     component: AdminPages,
     meta: { requiresAdmin: true } //Só adm entra em /admin
 }, {
+    name: 'adminUserData',
+    path: '/adminuserdata',
+    component: AdminUserData
+},{
     name: 'articlesByCategory',
     path: '/categories/:id/articles',
     component: ArticlesByCategory

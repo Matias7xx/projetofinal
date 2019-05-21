@@ -19,6 +19,16 @@ module.exports = app => {
         .get(admin(app.api.user.getById)) //Pegando pela ID
         .delete(admin(app.api.user.remove)) //Remover pela ID
 
+        app.route('/useraltername/:id') //Usuário alterar seus dados
+        .all(app.config.passport.authenticate())
+        .put(app.api.userAlter.savename)
+        .get(app.api.userAlter.getById) //Pegando pela ID
+
+        app.route('/useralterpassword/:id') //Usuário alterar seus dados
+        .all(app.config.passport.authenticate())
+        .put(app.api.userAlter.savepassword)
+        .get(app.api.userAlter.getById) //Pegando pela ID
+
 
     app.route('/categories')
         .all(app.config.passport.authenticate())

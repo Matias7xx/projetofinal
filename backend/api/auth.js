@@ -18,7 +18,7 @@ module.exports = app => {
             .where({ email: req.body.email })
             .first()
 
-        if (!user) return res.status(400).send('Usuário não encontrado.') // Se o usuário não existe, o email não foi cadastrado
+        if (!user) return res.status(400).send('Email e/ou Senha inválido(s).') // Se o usuário não existe, o email não foi cadastrado
 
         const isMatch = bcrypt.compareSync(req.body.password, user.password) //Comparar senhas criptografadas
         if (!isMatch) return res.status(401).send('Email e/ou Senha inválido(s).') //Se não forem iguais
