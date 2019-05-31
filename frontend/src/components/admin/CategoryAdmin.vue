@@ -34,6 +34,7 @@
                 </b-button>
             </template>
         </b-table>
+                <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
     </div>
 </template>
 
@@ -48,6 +49,9 @@ export default {
             mode: 'save',
             category: {},
             categories: [], //Lista de tabelas
+            page: 1,
+            limit: 0,
+            count: 0,
             fields: [ //Filtros da tabela
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Matéria', sortable: true },
@@ -58,10 +62,12 @@ export default {
     },
     methods: {
         loadCategories() {
-            const url = `${baseApiUrl}/categories`
+            const url = `${baseApiUrl}/categories?page=${this.page}`
             axios.get(url).then(res => {
                 // this.categories = res.data
-                this.categories = res.data.map(category => { //Criando 2 atributos para colcar no ComboBox
+                this.count = res.data.count
+                this.limit = res.data.limit
+                this.categories = res.data.data.map(category => { //Criando 2 atributos para colcar no ComboBox
                     return { ...category, value: category.id, text: category.path } //Tudo de categoria, ID e caminho
                 })
             })
@@ -93,6 +99,11 @@ export default {
         loadCategory(category, mode = 'save') {
             this.mode = mode
             this.category = { ...category }
+        }
+    },
+    watch: {
+        page() {
+            this.loadCategories()
         }
     },
     mounted() {

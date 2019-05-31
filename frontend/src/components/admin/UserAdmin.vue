@@ -62,6 +62,7 @@
                 </b-button>   
             </template>    
         </b-table>
+        <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
     </div>
 </template>
 
@@ -76,6 +77,9 @@ export default {
             mode: 'save', //Alterar entre modos de exclusão e salve
             user: {}, //Usuário cadastrado
             users: [], //Lista de usuários
+            page: 1,
+            limit: 0,
+            count: 0,
             fields: [ //Descrição dos campos
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
@@ -88,9 +92,11 @@ export default {
     },
     methods: {
         loadUsers() { //Carregar usuários do backend
-            const url = `${baseApiUrl}/users`
+            const url = `${baseApiUrl}/users?page=${this.page}`
             axios.get(url).then(res => { //get para recuperar usuários
-                this.users = res.data 
+                this.users = res.data.data
+                this.count = res.data.count
+                this.limit = res.data.limit
             })
         },
         reset() { //Limpar formulário
@@ -120,6 +126,11 @@ export default {
         loadUser(user, mode = 'save') { //Carregar Usuário no formulário
             this.mode = mode
             this.user = { ...user }  
+        }
+    },
+    watch: {
+        page() {
+            this.loadUsers()
         }
     },
     mounted() { //Quando o componente for carregado, automaticamente o loadUsers será chamado

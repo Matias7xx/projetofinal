@@ -187,8 +187,18 @@ module.exports = app => {
         })
         return categoriesWithPath
     }
-    const get = (req, res) => {
-        app.db('categories').then(categories => res.json(withPath(categories)))
+    //Está ocorrendo BUG de paginação, pois na hora de cadastrar ou alterar ele está pegando apenas 
+    //as matérias da paginação(count) atual!!
+    const limit = 25
+    const get = async (req, res) => {
+        const page = req.query.page || 1
+
+        const result = await app.db('categories').count('id').first()
+        const count = parseInt(result.count)
+
+        app.db('categories')
+        .limit(limit).offset(page * limit - limit)
+        .then(categories => res.json({ data: withPath(categories), count, limit }))
             .catch(err => res.status(500).send(err))
     }
     const getById = (req, res) => {

@@ -62,11 +62,18 @@ module.exports = app => { //representa instância do express
         }
     }
 
-    const get = ( req, res ) => { //Pegar todos os usuários do sistema
+    const limit = 5
+    const get = async ( req, res ) => { //Pegar todos os usuários do sistema
+        const page = req.query.page || 1
+
+        const result = await app.db('users').count('id').whereNull('deletedAt').first()
+        const count = parseInt(result.count)
+        
         app.db('users')
             .select('id', 'name', 'email', 'admin')
             .whereNull('deletedAt')
-            .then(users => res.json(users)) //Passando lista de usuários em JSON
+            .limit(limit).offset(page * limit - limit)
+            .then(users => res.json({ data: users, count, limit})) //Passando lista de usuários em JSON
             .catch(err => res.status(500).send(err))
     }
 

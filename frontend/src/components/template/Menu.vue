@@ -59,7 +59,7 @@ export default {
         /*background: rgba(52,60,65,1);*/
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
+        /*flex-wrap: wrap;*/
     }
 
     .menu a,

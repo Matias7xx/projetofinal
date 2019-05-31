@@ -19,15 +19,15 @@ module.exports = app => {
         .get(admin(app.api.user.getById)) //Pegando pela ID
         .delete(admin(app.api.user.remove)) //Remover pela ID
 
-        app.route('/useraltername/:id') //Usuário alterar seus dados
+    app.route('/useraltername/:id') //Usuário alterar seus dados
         .all(app.config.passport.authenticate())
         .put(app.api.userAlter.savename)
         .get(app.api.userAlter.getById) //Pegando pela ID
 
-        app.route('/useralterpassword/:id') //Usuário alterar seus dados
+    app.route('/useralterpassword/:id')
         .all(app.config.passport.authenticate())
         .put(app.api.userAlter.savepassword)
-        .get(app.api.userAlter.getById) //Pegando pela ID
+        .get(app.api.userAlter.getById)
 
 
     app.route('/categories')
@@ -61,7 +61,7 @@ module.exports = app => {
         .all(app.config.passport.authenticate()) //Todos os serviços dependem de autenticação(LOGIN)
         .get(app.api.article.getByCategory)
 
-        app.route('/news')
+    app.route('/news')
         .all(app.config.passport.authenticate())
         .get(app.api.news.get)
         .post(admin(app.api.news.save))

@@ -45,7 +45,7 @@ export default {
     computed: mapState(["user"]),
     methods: {
         loadUser() {
-            const url = `${baseApiUrl}/useralter/${this.user.id}` //Para pegar um atributo computado, é necessário usar o THIS
+            const url = `${baseApiUrl}/useralterpassword/${this.user.id}` //Para pegar um atributo computado, é necessário usar o THIS
             axios.get(url).then(res => { //get para recuperar usuários
                 this.userdata = res.data 
             })

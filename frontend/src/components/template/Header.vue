@@ -46,10 +46,9 @@ export default {
         /*background: linear-gradient(to right, #1e469a, #49a7c1);*/
         /*origin background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
         /*background-image: radial-gradient( circle farthest-corner at -4% -12.9%,  rgba(74,98,110,1) 0.3%, rgba(30,33,48,1) 90.2% );
-        /*background-image: radial-gradient( circle farthest-corner at 85.4% 50.8%,  rgba(14,72,222,1) 0%, rgba(3,22,65,1) 74.2% );*/
+        background-image: radial-gradient( circle farthest-corner at 85.4% 50.8%,  rgba(14,72,222,1) 0%, rgba(3,22,65,1) 74.2% );
         /*background: linear-gradient(90deg, rgba(56,77,95,1) 0%, rgba(96,125,139,1) 35%);*/
         background: rgba(52,60,65,1);
-
         display: flex;
         justify-content: center;
         align-items: center;
